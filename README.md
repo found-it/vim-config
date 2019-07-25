@@ -5,7 +5,8 @@ link to the configuration.
 
 ```
 mkdir -p ~/.vim; cd ~/.vim
-git clone <vim-config>
-ln -s ~/.vim/vim-config/vimrc ~/.vimrc
+git clone https://github.com/zer0-f0x/vim-config.git
+chmod +x install
+./install
 ```
 
