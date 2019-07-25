@@ -13,7 +13,7 @@ mkdir -p ~/.vim
 
 # Clone the config repo
 if [ ! -d ~/.vim/vim-config ]; then
-    git clone https://github.com/zer0-f0x/vim-config.git
+    git clone https://github.com/zer0-f0x/vim-config.git ~/.vim/
 else
     echo "vim-config exists - no need to pull" >> $log
 fi
