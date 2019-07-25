@@ -10,3 +10,13 @@ chmod +x install
 ./install
 ```
 
+## TODO
+
+* Auto-download vim-plug
+* Auto-install plugins
+* Setup aliases for terminal
+* Download and set up fish
+* Install
+    * htop
+    * tree
+    * neovim
