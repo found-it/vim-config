@@ -1,19 +1,21 @@
 # Local Configuration for Vim
 
-All you need to do is clone this repository and then create a symbolic
-link to the configuration.
+All you need to do is curl the install script for this repository and run it
+using bash and it will take care of installing everything for you.
 
 ```
-mkdir -p ~/.vim; cd ~/.vim
-git clone https://github.com/zer0-f0x/vim-config.git
-chmod +x install
-./install
+curl -L https://raw.githubusercontent.com/zer0-f0x/vim-config/master/install.sh | bash
 ```
+
+The configuration will link a vimrc for regular old vim. It will also install
+vim-plug as the plugin manager and link an nvim init file.
+
+## Plugins
+
+
 
 ## TODO
 
-* Auto-download vim-plug
-* Auto-install plugins
 * Setup aliases for terminal
 * Download and set up fish
 * Install
