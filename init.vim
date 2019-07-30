@@ -38,9 +38,17 @@ call plug#end()
 "
 """""""""""""""""""""""""""
 
+" Set the color scheme
 color badwolf
+
+" FZF mods
 map ; :Files<CR>
 
+" Note taking mods
+map - :Note
+let g:notes_directories = ['~/OneDrive\ -\ BOOZ\ ALLEN\ HAMILTON/notes/']
+
+" LightLine mods
 let g:lightline = {
   \     'active': {
   \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
@@ -65,3 +73,4 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" Language server configuration
