@@ -39,14 +39,14 @@ call plug#end()
 """""""""""""""""""""""""""
 
 " Set the color scheme
-color badwolf
+silent! color badwolf
 
 " FZF mods
 map ; :Files<CR>
 
 " Note taking mods
 map - :Note
-let g:notes_directories = ['~/OneDrive\ -\ BOOZ\ ALLEN\ HAMILTON/notes/']
+let g:notes_directories = ['~/notes/']
 
 " LightLine mods
 let g:lightline = {
