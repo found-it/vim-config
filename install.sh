@@ -18,8 +18,6 @@ else
     echo "vim-config exists - no need to pull" >> $log
 fi
 
-cd && ln -s ~/.vim/vim-config/vimrc .vimrc &>> $log
-
 # Grab vim-plug
 echo "Installing |vim-plug|..." &>> $log
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
