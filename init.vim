@@ -30,6 +30,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 """""""""""""""""""""""""""

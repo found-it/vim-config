@@ -25,6 +25,9 @@ syntax enable
 set background=dark
 colorscheme desert
 
+" File specific configs
+autocmd FileType yaml,yml setlocal ts=2 sw=2 sts=2 et ai
+
 " Indentation
 set autoindent
 set smartindent
