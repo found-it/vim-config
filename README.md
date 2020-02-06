@@ -4,7 +4,7 @@ All you need to do is curl the install script for this repository and run it
 using bash and it will take care of installing everything for you.
 
 ```
-curl -L https://raw.githubusercontent.com/zer0-f0x/vim-config/master/install.sh | bash
+curl -L https://raw.githubusercontent.com/found-it/vim-config/master/install.sh | bash
 ```
 
 The configuration will link a vimrc for regular old vim. It will also install
