@@ -31,6 +31,7 @@ Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.s
 Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'cespare/vim-toml'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 """""""""""""""""""""""""""
@@ -84,3 +85,7 @@ nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
 nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " Language server configuration
+
+" Terraform Configs
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1

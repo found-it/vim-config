@@ -36,6 +36,3 @@ else
     echo "You need to install neovim before moving on." >> $log
     echo "You need to install neovim before moving on."
 fi
-
-# echo 'alias vim nvim' >> ~/.config/fish/config.fish
-# source ~/.config/fish/config.fish
