@@ -15,7 +15,8 @@ mkdir -p ~/.vim
 if [ ! -d ~/.vim/vim-config ]; then
     git clone https://github.com/found-it/vim-config.git ~/.vim/vim-config
 else
-    echo "vim-config exists - no need to pull" >> $log
+    echo "vim-config exists - no need to clone" >> $log
+    # TODO: git pull?
 fi
 
 # Grab vim-plug
@@ -27,6 +28,9 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 mkdir -p ~/.config/nvim
 cd ~/.config/nvim && ln -s ~/.vim/vim-config/init.vim init.vim &>> $log
 cd ~/.config/nvim && ln -s ~/.vim/vim-config/settings.json settings.json &>> $log
+
+
+cd && ln -s ~/.vim/vim-config/tmux.conf .tmux.conf &>> $log
 
 # Install and update all plugins
 if hash nvim 2>/dev/null; then
