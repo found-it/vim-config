@@ -32,6 +32,7 @@ Plug 'xolox/vim-notes'
 Plug 'xolox/vim-misc'
 Plug 'cespare/vim-toml'
 Plug 'hashivim/vim-terraform'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 """""""""""""""""""""""""""
