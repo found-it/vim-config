@@ -10,31 +10,35 @@
 
 log='/tmp/vim-config.log'
 
-mkdir -p ~/.dotfiles
+mkdir -p $HOME/.dotfiles
 
 function install_nvim() {
     # Clone the config repo
-    if [ ! -d ~/.dotfiles/vim-config ]; then
-        git clone https://github.com/found-it/vim-config.git ~/.dotfiles/vim-config
+    if [ ! -d $HOME/.dotfiles/vim-config ]; then
+        git clone https://github.com/found-it/vim-config.git $HOME/.dotfiles/vim-config
     else
-        echo "vim-config exists - no need to clone" | tee -a $log
+        printf "vim-config exists - no need to clone\n" | tee -a $log
         # TODO: git pull?
     fi
 
     # Grab vim-plug
-    echo "Installing |vim-plug|..." &>> $log
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    printf "Installing |vim-plug|...\n" &>> $log
+    curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee -a $log
 
+    mkdir -p $HOME/.vim/colors
+    curl -o $HOME/.vim/colors/gruvbox.vim \
+        https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim | tee -a $log
+
     # Set up NeoVim Configuration
-    mkdir -p ~/.config/nvim
-    cd ~/.config/nvim && ln -s ~/.dotfiles/vim-config/init.vim init.vim | tee -a $log
-    cd ~/.config/nvim && ln -s ~/.dotfiles/vim-config/settings.json settings.json | tee -a $log
+    mkdir -p $HOME/.config/nvim
+    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/init.vim init.vim | tee -a $log
+    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/settings.json settings.json | tee -a $log
 }
 
 
 function install_tmux() {
-    cd && ln -s ~/.dotfiles/vim-config/tmux.conf .tmux.conf | tee -a $log
+    cd && ln -s $HOME/.dotfiles/vim-config/tmux.conf .tmux.conf | tee -a $log
 }
 
 
@@ -64,7 +68,7 @@ function install_commands() {
         # nvim is installed
         nvim +PlugInstall +PlugUpdate +qa
     else
-        echo "You need to install neovim before moving on." | tee -a $log
+        printf "You need to install neovim before moving on.\n" | tee -a $log
     fi
 }
 
