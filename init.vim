@@ -9,7 +9,7 @@ else
 
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath=&runtimepath
-    source ~/.vim/vim-config/vimrc
+    source ~/.dotfiles/vim-config/vimrc
 
     """""""""""""""""""""""""""
     "
