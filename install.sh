@@ -22,7 +22,7 @@ function install_nvim() {
     fi
 
     # Grab vim-plug
-    printf "Installing |vim-plug|...\n" tee -a $logfile
+    printf "Installing |vim-plug|...\n" | tee -a $logfile
     curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee -a $logfile
 
