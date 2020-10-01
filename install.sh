@@ -8,7 +8,7 @@
 #   TODO: Use an https option, default to ssh
 #
 
-log='/tmp/vim-config.log'
+logfile='/tmp/vim-config.log'
 
 mkdir -p $HOME/.dotfiles
 
@@ -17,28 +17,28 @@ function install_nvim() {
     if [ ! -d $HOME/.dotfiles/vim-config ]; then
         git clone https://github.com/found-it/vim-config.git $HOME/.dotfiles/vim-config
     else
-        printf "vim-config exists - no need to clone\n" | tee -a $log
+        printf "vim-config exists - no need to clone\n" | tee -a $logfile
         # TODO: git pull?
     fi
 
     # Grab vim-plug
-    printf "Installing |vim-plug|...\n" &>> $log
+    printf "Installing |vim-plug|...\n" tee -a $logfile
     curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee -a $log
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee -a $logfile
 
     mkdir -p $HOME/.vim/colors
     curl -o $HOME/.vim/colors/gruvbox.vim \
-        https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim | tee -a $log
+        https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim | tee -a $logfile
 
     # Set up NeoVim Configuration
     mkdir -p $HOME/.config/nvim
-    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/init.vim init.vim | tee -a $log
-    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/settings.json settings.json | tee -a $log
+    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/init.vim init.vim | tee -a $logfile
+    cd $HOME/.config/nvim && ln -s $HOME/.dotfiles/vim-config/settings.json settings.json | tee -a $logfile
 }
 
 
 function install_tmux() {
-    cd && ln -s $HOME/.dotfiles/vim-config/tmux.conf .tmux.conf | tee -a $log
+    cd && ln -s $HOME/.dotfiles/vim-config/tmux.conf .tmux.conf | tee -a $logfile
 }
 
 
@@ -57,7 +57,7 @@ function install_commands() {
     for cmd in "${cmds[@]}";
     do
         command -v "$cmd" > /dev/null || {
-            printf " Missing %s - installing\n"
+            printf " Missing %s - installing\n" | tee -a $logfile
             # Install that ish
             exit 1
         }
@@ -68,13 +68,13 @@ function install_commands() {
         # nvim is installed
         nvim +PlugInstall +PlugUpdate +qa
     else
-        printf "You need to install neovim before moving on.\n" | tee -a $log
+        printf "You need to install neovim before moving on.\n" | tee -a $logfile
     fi
 }
 
 
 function main() {
-    touch $log
+    touch $logfile
     install_commands
     install_nvim
     install_tmux
