@@ -7,6 +7,7 @@ if exists('g:vscode')
 
 else
 
+    " Import the vimrc
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath=&runtimepath
     source ~/.dotfiles/vim-config/vimrc
@@ -39,6 +40,7 @@ else
     Plug 'hashivim/vim-terraform'
     Plug 'leafgarland/typescript-vim'
     Plug 'itchyny/vim-gitbranch'
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
     call plug#end()
     """""""""""""""""""""""""""
@@ -100,4 +102,5 @@ else
     " Terraform Configs
     let g:terraform_align=1
     let g:terraform_fmt_on_save=1
+
 endif

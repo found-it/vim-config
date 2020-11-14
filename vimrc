@@ -7,7 +7,6 @@
 "               \__/ |_|_|  |_| | \___|
 "--------------------------------------------------------
 
-au BufNewFile,BufRead streamengine_* setlocal ft=se
 autocmd BufNewFile,BufRead *.tex set filetype=tex
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -34,7 +33,6 @@ set autoindent
 set smartindent
 set showmatch
 
-
 " Tabs
 set tabstop=4
 set softtabstop=4
@@ -55,6 +53,7 @@ set incsearch
 set hlsearch
 
 let mapleader=','
+
 "Remove all trailing whitespace by pressing F5.
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <leader><space> :nohlsearch<CR>
