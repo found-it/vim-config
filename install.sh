@@ -66,7 +66,7 @@ function install_commands() {
 
     if hash nvim 2>/dev/null; then
         # nvim is installed
-        nvim +PlugInstall +PlugUpdate +qa
+        nvim +PlugUpgrade +PlugInstall +PlugUpdate +qa
     else
         printf "You need to install neovim before moving on.\n" | tee -a $logfile
     fi
