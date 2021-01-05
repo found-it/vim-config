@@ -16,33 +16,36 @@ else
     "
     " Plugins
     "
-    " Using vim-plug
-    "       https://github.com/junegunn/vim-plug
+    " Using vim-plug - https://github.com/junegunn/vim-plug
     "
     """""""""""""""""""""""""""
     call plug#begin('~/.vim/plugged')
 
-    " Enhanced
-    Plug 'https://github.com/octol/vim-cpp-enhanced-highlight.git'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    Plug 'sjl/badwolf'
     Plug 'itchyny/lightline.vim'
     Plug 'tomtom/tcomment_vim'
     Plug 'easymotion/vim-easymotion'
     Plug 'airblade/vim-gitgutter'
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
-    Plug 'terryma/vim-multiple-cursors'
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
     Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
     Plug 'xolox/vim-notes'
     Plug 'xolox/vim-misc'
     Plug 'cespare/vim-toml'
+    Plug 'itchyny/vim-gitbranch'
+
+    " Language specific
+    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
     Plug 'hashivim/vim-terraform'
     Plug 'leafgarland/typescript-vim'
-    Plug 'itchyny/vim-gitbranch'
-    Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+    Plug 'https://github.com/octol/vim-cpp-enhanced-highlight.git'
+
+    " Colorschemes
+    Plug 'sjl/badwolf'
     Plug 'fatih/molokai'
-    Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+    Plug 'sainnhe/gruvbox-material'
 
     call plug#end()
     """""""""""""""""""""""""""
@@ -67,7 +70,7 @@ else
 
     " LightLine mods
     let g:lightline = {
-                \     'colorscheme': 'one',
+                \     'colorscheme': 'molokai',
                 \
                 \     'active': {
                 \         'left': [ ['mode', 'paste' ],
