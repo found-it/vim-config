@@ -1,12 +1,12 @@
 
 "
-" Load my vimrc
+" Neovim Config
 "
 
 if exists('g:vscode')
 
 else
-
+    
     " Import the vimrc
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath=&runtimepath
@@ -29,11 +29,17 @@ else
     Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-    Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
     Plug 'xolox/vim-notes'
     Plug 'xolox/vim-misc'
-    Plug 'cespare/vim-toml'
     Plug 'itchyny/vim-gitbranch'
+
+    Plug 'dense-analysis/ale'
+
+    " Requires node curl -sL install-node.now.sh/lts | bash
+    " :CocInstall coc-yaml
+    " :CocInstall coc-json
+    " :CocInstall coc-pyright
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " Language specific
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -41,10 +47,12 @@ else
     Plug 'hashivim/vim-terraform'
     Plug 'leafgarland/typescript-vim'
     Plug 'https://github.com/octol/vim-cpp-enhanced-highlight.git'
+    Plug 'cespare/vim-toml'
 
     " Colorschemes
     Plug 'sjl/badwolf'
     Plug 'fatih/molokai'
+    Plug 'morhetz/gruvbox'
     Plug 'sainnhe/gruvbox-material'
 
     call plug#end()
@@ -109,25 +117,6 @@ else
     let g:go_highlight_space_tab_error = 1
     " Golang Configuration
 
-
-    " Language server configuration
-    let g:LanguageClient_serverCommands = {
-                \ 'cpp': ['cquery', '--log-file=/tmp/cq.log'],
-                \ 'c': ['cquery', '--log-file=/tmp/cq.log'],
-                \ }
-
-    let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
-    let g:LanguageClient_settingsPath = '/home/parallels/.config/nvim/settings.json'
-    set completefunc=LanguageClient#complete
-    set formatexpr=LanguageClient_textDocument_rangeFormatting()
-
-    nnoremap <silent> gh :call LanguageClient#textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
-    nnoremap <silent> gs :call LanguageClient#textDocument_documentSymbol()<CR>
-    nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-    " Language server configuration
-
     " Terraform Configs
     let g:terraform_align=1
     let g:terraform_fmt_on_save=1
@@ -139,4 +128,23 @@ else
     nmap <silent> <leader>ge :Semshi goto error<CR>
     " Semshi Config
 
+    " In ~/.vim/vimrc, or somewhere similar.
+    let g:ale_linters = {
+                \   'python': ['pylama'],
+                \}
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_sign_error = 'E'
+    let g:ale_sign_warning = 'W'
+    " highlight ALEWarning ctermbg=DarkMagenta
+
+    " coc Config
+    " Use <c-space> to trigger completion.
+    if has('nvim')
+        inoremap <silent><expr> <c-space> coc#refresh()
+    else
+        inoremap <silent><expr> <c-@> coc#refresh()
+    endif
+    " coc Config
 endif
