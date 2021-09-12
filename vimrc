@@ -23,10 +23,16 @@ syntax enable
 " Visual Stuff
 set background=dark
 colorscheme desert
+set scrolloff=30
 
 " File specific configs
 autocmd FileType yaml,yml setlocal ts=2 sw=2 sts=2 et ai
 autocmd FileType tf setlocal ts=2 sw=2 sts=2 et ai
+autocmd FileType json setlocal ts=2 sw=2 sts=2 et ai
+autocmd FileType sh setlocal ts=2 sw=2 sts=2 et ai
+autocmd Filetype json colorscheme gruvbox-material
+autocmd Filetype md colorscheme gruvbox-material
+autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
 
 " Indentation
 set autoindent

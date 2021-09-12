@@ -6,7 +6,7 @@
 if exists('g:vscode')
 
 else
-    
+
     " Import the vimrc
     set runtimepath^=~/.vim runtimepath+=~/.vim/after
     let &packpath=&runtimepath
@@ -39,7 +39,7 @@ else
     " :CocInstall coc-yaml
     " :CocInstall coc-json
     " :CocInstall coc-pyright
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " Language specific
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -54,6 +54,7 @@ else
     Plug 'fatih/molokai'
     Plug 'morhetz/gruvbox'
     Plug 'sainnhe/gruvbox-material'
+    Plug 'wadackel/vim-dogrun'
 
     call plug#end()
     """""""""""""""""""""""""""
@@ -66,6 +67,7 @@ else
     " let g:rehash256 = 1
     " let g:molokai_original = 1
     silent! color molokai
+    " silent! color dogrun
     " silent! color gruvbox
     " silent! color badwolf
 

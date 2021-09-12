@@ -10,8 +10,6 @@
 
 logfile='/tmp/vim-config.log'
 
-mkdir -p "$HOME/.dotfiles"
-
 install_nvim() {
     # Clone the config repo
     if [ ! -d "$HOME/.dotfiles/vim-config" ]; then
@@ -28,8 +26,9 @@ install_nvim() {
 
     # Set up NeoVim Configuration
     mkdir -p "$HOME/.config/nvim"
-    cd "$HOME/.config/nvim" && ln -s "$HOME/.dotfiles/vim-config/init.vim init.vim" | tee -a $logfile
-    cd "$HOME/.config/nvim" && ln -s "$HOME/.dotfiles/vim-config/settings.json settings.json" | tee -a $logfile
+    ln -s "$HOME/.dotfiles/vim-config/init.vim" "$HOME/.config/nvim/init.vim" | tee -a $logfile
+    ln -s "$HOME/.dotfiles/vim-config/settings.json" "$HOME/.config/nvim/settings.json" | tee -a $logfile
+    cp coc-settings.json "$HOME/.config/nvim"
 }
 
 
@@ -47,13 +46,11 @@ install_commands() {
 
     declare -a cmds=(
         "nvim"
-        "tree"
-        "htop"
     )
     for cmd in "${cmds[@]}";
     do
         command -v "$cmd" > /dev/null || {
-            printf " Missing %s - installing\n" "$cmd" | tee -a $logfile
+            printf " Missing %s - install it\n" "$cmd" | tee -a $logfile
             # Install that ish
             exit 1
         }
@@ -69,8 +66,24 @@ install_commands() {
 }
 
 
+#
+#   Utilities:
+#   - nvim
+#   - tree
+#   - htop
+#   - ripgrep
+#   - glow
+#   - ctop
+#   - exa
+#   - stern
+#   - tldr
+#   - jq
+#
 main() {
+
+    mkdir -p "$HOME/.dotfiles"
     touch $logfile
+
     install_commands
     install_nvim
     install_tmux
