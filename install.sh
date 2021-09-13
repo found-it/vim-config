@@ -13,7 +13,7 @@ logfile='/tmp/vim-config.log'
 install_nvim() {
     # Clone the config repo
     if [ ! -d "$HOME/.dotfiles/vim-config" ]; then
-        git clone https://github.com/found-it/vim-config.git "$HOME/.dotfiles/vim-config"
+        git clone git@github.com:found-it/vim-config.git "$HOME/.dotfiles/vim-config"
     else
         printf "vim-config exists - no need to clone\n" | tee -a $logfile
         # TODO: git pull?
@@ -43,6 +43,11 @@ install_tmux() {
 install_commands() {
 
     # Install and update all plugins
+
+    # cat /etc/os-release | grep -i "arch linux"
+    if hash pacman 2>/dev/null; then
+      sudo pacman --sync --refresh --noconfirm exa fish neovim tmux git wget nodejs python-pip
+    fi
 
     declare -a cmds=(
         "nvim"
