@@ -20,20 +20,23 @@ install_nvim() {
     fi
 
     # Grab vim-plug
-    printf "Installing |vim-plug|...\n" | tee -a $logfile
-    curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee -a $logfile
+    # printf "Installing |vim-plug|...\n" | tee -a $logfile
+    # curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
+    #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee -a $logfile
+    # git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+    #     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # Set up NeoVim Configuration
     mkdir -p "$HOME/.config/nvim"
-    ln -s "$HOME/.dotfiles/vim-config/init.vim" "$HOME/.config/nvim/init.vim" | tee -a $logfile
+    ln -s "$HOME/.dotfiles/vim-config/init.lua" "$HOME/.config/nvim/init.lua" | tee -a $logfile
+    ln -s "$HOME/.dotfiles/vim-config/lua/" "$HOME/.config/nvim/lua" | tee -a $logfile
     ln -s "$HOME/.dotfiles/vim-config/settings.json" "$HOME/.config/nvim/settings.json" | tee -a $logfile
     cp coc-settings.json "$HOME/.config/nvim"
 }
 
 
 install_tmux() {
-    cd && ln -s "$HOME/.dotfiles/vim-config/tmux.conf" .tmux.conf | tee -a $logfile
+  ln -s "$HOME/.dotfiles/vim-config/tmux.conf" "$HOME/.tmux.conf" | tee -a $logfile
 }
 
 
@@ -60,6 +63,7 @@ install_commands() {
     if hash nvim 2>/dev/null; then
         # nvim is installed
         nvim +PlugUpgrade +PlugInstall +PlugUpdate +qa
+        # nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
     else
         printf "You need to install neovim before moving on.\n" | tee -a $logfile
     fi

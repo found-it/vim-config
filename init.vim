@@ -1,16 +1,78 @@
-
 "
-" Neovim Config
+" Author : James Petersen
+"   File : init.vim
 "
 
 if exists('g:vscode')
 
 else
+    autocmd BufNewFile,BufRead *.tex set filetype=tex
+    autocmd BufWritePre * %s/\s\+$//e
+
+    set showmode
+    set number relativenumber
+
+    set splitbelow
+    set splitright
+
+    " Syntax
+    syntax on
+    syntax enable
+
+    " Visual Stuff
+    set background=dark
+    set scrolloff=5
+
+    " File specific configs
+    " autocmd FileType yaml,yml setlocal ts=2 sw=2 sts=2 et ai
+    autocmd FileType tf setlocal ts=2 sw=2 sts=2 et ai
+    autocmd FileType json setlocal ts=2 sw=2 sts=2 et ai
+    autocmd FileType sh setlocal ts=2 sw=2 sts=2 et ai
+    autocmd Filetype json colorscheme gruvbox-material
+    autocmd Filetype md colorscheme gruvbox-material
+    autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0
+
+    " Indentation
+    set autoindent
+    set smartindent
+    set showmatch
+
+    " Tabs
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+    set expandtab
+
+    set backspace=indent,eol,start
+    set confirm
+    set mouse=a
+
+    set cursorline
+    filetype indent on
+
+    set wildmenu
+    set lazyredraw
+
+    set incsearch
+    set hlsearch
+
+    let mapleader=','
+
+    "Remove all trailing whitespace by pressing F5.
+    nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+    nnoremap <leader><space> :nohlsearch<CR>
+    inoremap jk <esc>
+    nnoremap <C-n> <C-w>
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+
 
     " Import the vimrc
-    set runtimepath^=~/.vim runtimepath+=~/.vim/after
-    let &packpath=&runtimepath
-    source ~/.dotfiles/vim-config/vimrc
+    " set runtimepath^=~/.vim runtimepath+=~/.vim/after
+    " let &packpath=&runtimepath
+    " source ~/.dotfiles/vim-config/vimrc
 
     """""""""""""""""""""""""""
     "
@@ -39,7 +101,7 @@ else
     " :CocInstall coc-yaml
     " :CocInstall coc-json
     " :CocInstall coc-pyright
-    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
     " Language specific
     Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -55,6 +117,7 @@ else
     Plug 'morhetz/gruvbox'
     Plug 'sainnhe/gruvbox-material'
     Plug 'wadackel/vim-dogrun'
+    Plug 'liuchengxu/space-vim-dark'
 
     call plug#end()
     """""""""""""""""""""""""""
@@ -66,7 +129,8 @@ else
     " Set the color scheme
     " let g:rehash256 = 1
     " let g:molokai_original = 1
-    silent! color molokai
+    silent! color space-vim-dark
+    " silent! color molokai
     " silent! color dogrun
     " silent! color gruvbox
     " silent! color badwolf

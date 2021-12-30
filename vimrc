@@ -23,7 +23,7 @@ syntax enable
 " Visual Stuff
 set background=dark
 colorscheme desert
-set scrolloff=30
+set scrolloff=5
 
 " File specific configs
 autocmd FileType yaml,yml setlocal ts=2 sw=2 sts=2 et ai

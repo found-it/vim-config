@@ -24,3 +24,9 @@ wget -O ~/.vim/colors/gruvbox.vim https://raw.githubusercontent.com/morhetz/gruv
     * htop
     * tree
     * neovim
+
+## Installing language servers
+
+```sh
+npm i -g pyright
+npm i -g
