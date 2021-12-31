@@ -71,6 +71,13 @@ return require('packer').startup(function()
     end,
   }
 
+  use {
+    'williamboman/nvim-lsp-installer',
+    config = function()
+        require('plugins.lsp.installer')
+    end,
+  }
+
   -- Autocompletion plugin
   use 'hrsh7th/nvim-cmp'
 
@@ -83,7 +90,12 @@ return require('packer').startup(function()
   -- Snippets plugin
   use 'L3MON4D3/LuaSnip'
 
-  use 'lukas-reineke/indent-blankline.nvim'
+  use {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+        require('plugins.indent_blankline')
+    end,
+  }
 
   use {
     'norcalli/nvim-colorizer.lua',
@@ -91,5 +103,15 @@ return require('packer').startup(function()
       require('plugins.colorizer')
     end,
   }
+
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    config = function() require'nvim-tree'.setup {} end
+  }
+
+  use 'gfanto/fzf-lsp.nvim'
 
 end)

@@ -54,6 +54,7 @@ install_commands() {
 
     declare -a cmds=(
         "nvim"
+        "bat"
     )
     for cmd in "${cmds[@]}";
     do
@@ -87,6 +88,7 @@ install_commands() {
 #   - stern
 #   - tldr
 #   - jq
+#   - bat
 #
 main() {
 
