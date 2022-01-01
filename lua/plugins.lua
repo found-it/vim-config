@@ -23,16 +23,23 @@ return require('packer').startup(function()
   -- packer manages itself
   use 'wbthomason/packer.nvim'
 
-  -- colorscheme
+  -- colorschemes
   use 'liuchengxu/space-vim-dark'
+  use 'tanvirtin/monokai.nvim'
 
   -- fuzzy file finding
+  -- use {
+  --     'junegunn/fzf',
+  --     dir = '~/.fzf',
+  --     run = './install --all'
+  -- }
+  -- use 'junegunn/fzf.vim'
+  -- use 'gfanto/fzf-lsp.nvim'
+
   use {
-      'junegunn/fzf',
-      dir = '~/.fzf',
-      run = './install --all'
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use 'junegunn/fzf.vim'
 
   -- multi-line stuff
   use {
@@ -93,14 +100,14 @@ return require('packer').startup(function()
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-        require('plugins.indent_blankline')
+      require('plugins.blankline')
     end,
   }
 
   use {
     'norcalli/nvim-colorizer.lua',
     config = function()
-      require('plugins.colorizer')
+      require('colorizer').setup()
     end,
   }
 
@@ -112,6 +119,5 @@ return require('packer').startup(function()
     config = function() require'nvim-tree'.setup {} end
   }
 
-  use 'gfanto/fzf-lsp.nvim'
 
 end)

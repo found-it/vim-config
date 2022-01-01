@@ -1,3 +1,8 @@
+--
+-- Author : found-it
+--   File : servers.lua
+--
+
 local lspconfig = require('lspconfig')
 
 -- Set completeopt to have a better completion experience

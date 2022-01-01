@@ -9,12 +9,25 @@ require('plugins')
 local api = vim.api
 local cmd = vim.cmd
 
--- set the colorscheme
+-- colorscheme settings
+-- cmd 'silent! colorscheme monokai_pro'
 cmd 'silent! colorscheme space-vim-dark'
+cmd 'hi Comment    cterm=italic'
+cmd 'hi Normal     ctermbg=NONE guibg=NONE'
+cmd 'hi LineNr     ctermbg=NONE guibg=NONE'
+cmd 'hi SignColumn ctermbg=NONE guibg=NONE'
 
--- config: fzf
-api.nvim_set_keymap('', ';', ':Files<CR>', {noremap = true, silent = true})
+-- key mappings: telescope
+api.nvim_set_keymap('', ';ff', ':Telescope find_files<CR>', {noremap = true, silent = true})
+api.nvim_set_keymap('', ';fg', ':Telescope live_grep<CR>', {noremap = true, silent = true})
+api.nvim_set_keymap('', ';fb', ':Telescope buffers<CR>', {noremap = true, silent = true})
+api.nvim_set_keymap('', ';fh', ':Telescope help_tags<CR>', {noremap = true, silent = true})
+api.nvim_set_keymap('', ';fd', ':Telescope git_status<CR>', {noremap = true, silent = true})
+
+-- key mappings: tree
 api.nvim_set_keymap('', 't', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+
+-- key mappings: blankline
 api.nvim_set_keymap('', '|', ':IndentBlanklineToggle<CR>', {noremap = true, silent = true})
 
 -- Remove all whitespace on save

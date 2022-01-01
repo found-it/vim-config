@@ -1,3 +1,8 @@
+--
+-- Author : found-it
+--   File : options.lua
+--
+
 local opt = vim.opt
 
 opt.showmode = true

@@ -50,6 +50,9 @@ install_commands() {
     # cat /etc/os-release | grep -i "arch linux"
     if hash pacman 2>/dev/null; then
       sudo pacman --sync --refresh --noconfirm exa fish neovim tmux git wget nodejs python-pip
+    # elif hash brew 2>/dev/null; then
+    #   brew install neovim
+    #   brew install bat
     fi
 
     declare -a cmds=(
@@ -68,7 +71,7 @@ install_commands() {
 
     if hash nvim 2>/dev/null; then
         # nvim is installed
-        nvim +PlugUpgrade +PlugInstall +PlugUpdate +qa
+        # nvim +PlugUpgrade +PlugInstall +PlugUpdate +qa
         # nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
     else
         printf "You need to install neovim before moving on.\n" | tee -a $logfile
