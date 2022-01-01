@@ -72,7 +72,7 @@ install_commands() {
     if hash nvim 2>/dev/null; then
         # nvim is installed
         # nvim +PlugUpgrade +PlugInstall +PlugUpdate +qa
-        # nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+        nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
     else
         printf "You need to install neovim before moving on.\n" | tee -a $logfile
     fi

@@ -25,8 +25,8 @@ wget -O ~/.vim/colors/gruvbox.vim https://raw.githubusercontent.com/morhetz/gruv
     * tree
     * neovim
 
-## Installing language servers
+## Install python language server plugins
 
 ```sh
-npm i -g pyright
-npm i -g
+:PylspInstall pyls-flake8 pylsp-mypy pyls-isort
+```
