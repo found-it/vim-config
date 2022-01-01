@@ -57,7 +57,6 @@ install_commands() {
 
     declare -a cmds=(
         "nvim"
-        "bat"
     )
     for cmd in "${cmds[@]}";
     do
