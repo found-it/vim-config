@@ -18,7 +18,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Define plugins
-return require('packer').startup(function()
+return require('packer').startup(function(use)
 
   -- packer manages itself
   use 'wbthomason/packer.nvim'
@@ -26,15 +26,6 @@ return require('packer').startup(function()
   -- colorschemes
   use 'liuchengxu/space-vim-dark'
   use 'tanvirtin/monokai.nvim'
-
-  -- fuzzy file finding
-  -- use {
-  --     'junegunn/fzf',
-  --     dir = '~/.fzf',
-  --     run = './install --all'
-  -- }
-  -- use 'junegunn/fzf.vim'
-  -- use 'gfanto/fzf-lsp.nvim'
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -65,11 +56,13 @@ return require('packer').startup(function()
         config = function()
             require('plugins.treesitter')
         end,
-    -- { 'nvim-treesitter/nvim-treesitter-textobjects', after = 'nvim-treesitter' },
-    -- { 'nvim-treesitter/nvim-treesitter-refactor', after = 'nvim-treesitter' },
   }
 
   -- lsp
+  -- use {
+  --   'neoclide/coc.nvim',
+  --   branch = 'release',
+  -- }
   use {
     'neovim/nvim-lspconfig',
     -- event = 'BufRead',
@@ -116,7 +109,26 @@ return require('packer').startup(function()
     requires = {
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
-    config = function() require'nvim-tree'.setup {} end
+    config = function()
+      require('nvim-tree').setup({
+        diagnostics = {
+            enable = true,
+        },
+        update_focused_file = {
+            enable = true,
+        },
+        view = {
+            width = 35,
+            side = 'left',
+        },
+        filters = {
+            custom = { '.git', 'node_modules' },
+        },
+        git = {
+            ignore = false,
+        },
+      })
+    end
   }
 
 

@@ -3,6 +3,8 @@
 --   File : init.lua
 --
 
+vim.g.mapleader = ","
+
 require('options')
 require('plugins')
 
@@ -23,6 +25,7 @@ api.nvim_set_keymap('', ';fg', ':Telescope live_grep<CR>', {noremap = true, sile
 api.nvim_set_keymap('', ';fb', ':Telescope buffers<CR>', {noremap = true, silent = true})
 api.nvim_set_keymap('', ';fh', ':Telescope help_tags<CR>', {noremap = true, silent = true})
 api.nvim_set_keymap('', ';fd', ':Telescope git_status<CR>', {noremap = true, silent = true})
+api.nvim_set_keymap('', ';fs', ':Telescope current_buffer_fuzzy_find<CR>', {noremap = true, silent = true})
 
 -- key mappings: tree
 api.nvim_set_keymap('', 't', ':NvimTreeToggle<CR>', {noremap = true, silent = true})

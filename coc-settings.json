@@ -1,13 +1,33 @@
 {
   "languageserver": {
-      "golang": {
-        "command": "gopls",
-        "rootPatterns": ["go.mod"],
-        "filetypes": ["go"]
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ],
+      "initializationOptions": {
+        "gocodeCompletionEnabled": true,
+        "diagnosticsEnabled": true,
+        "lintTool": "golint"
       }
+    },
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": [
+        "lua"
+      ]
+    },
+    "python": {
+      "analysis": {
+        "autoImportCompletions": true,
+        "typeCheckingMode": "strict"
+      }
+    }
   },
-
   "yaml.schemas": {
-      "kubernetes": "/*.yaml"
+    "kubernetes": "/*.yaml"
   }
 }

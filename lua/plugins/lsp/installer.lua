@@ -67,6 +67,8 @@ lsp_installer.settings({
     max_concurrent_installers = 4,
 })
 
+local util = require("lspconfig/util")
+
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
@@ -76,9 +78,32 @@ lsp_installer.on_server_ready(function(server)
     }
 
     -- (optional) Customize the options passed to the server
-    -- if server.name == "tsserver" then
-    --     opts.root_dir = function() ... end
-    -- end
+    if server.name == "pyright" then
+      opts.settings = {
+        pylsp = {
+          plugins = {
+            jedi_completion = {
+              include_params = true,
+            },
+          },
+        },
+      }
+    elseif server.name == "pyright" then
+        opts.handlers = {
+          -- pyright ignores dynamicRegistration settings
+          ['client/registerCapability'] = function(_, _, _, _)
+            return {
+              result = nil;
+              error = nil;
+            }
+          end
+        };
+        opts.root_dir = function(fname)
+          return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+            util.path.dirname(fname)
+        end
+    --     end
+    end
 
     -- This setup() function is exactly the same as lspconfig's setup function.
     -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -88,9 +113,8 @@ end)
 -- Include the servers you want to have installed by default below
 local servers = {
   "gopls",        -- Golang
-  "bashls",       -- Bash
-  "pyright",      -- Python
   "pylsp",        -- Python
+  "pyright",      -- Python
   "yamlls",       -- Yaml
   "sumneko_lua",  -- Lua
   "jsonls",       -- JSON
