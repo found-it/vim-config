@@ -26,6 +26,20 @@ return require('packer').startup(function(use)
   -- colorschemes
   use 'liuchengxu/space-vim-dark'
   use 'tanvirtin/monokai.nvim'
+  use({
+    "catppuccin/nvim",
+    as = "catppuccin",
+    config = function()
+      require('plugins.catppuccin')
+    end,
+  })
+  use 'Mofiqul/vscode.nvim'
+
+  -- https://github.com/sainnhe/sonokai
+  use 'sainnhe/sonokai'
+
+  -- https://github.com/rebelot/kanagawa.nvim
+  use "rebelot/kanagawa.nvim"
 
   use {
     'nvim-telescope/telescope.nvim',
@@ -40,6 +54,13 @@ return require('packer').startup(function(use)
 
   -- visual line commenting
   use 'tomtom/tcomment_vim'
+
+  -- use {
+  --   "blackCauldron7/surround.nvim",
+  --   config = function()
+  --     require"surround".setup {mappings_style = "sandwich"}
+  --   end
+  -- }
 
   use {
     'nvim-lualine/lualine.nvim',
@@ -59,10 +80,6 @@ return require('packer').startup(function(use)
   }
 
   -- lsp
-  -- use {
-  --   'neoclide/coc.nvim',
-  --   branch = 'release',
-  -- }
   use {
     'neovim/nvim-lspconfig',
     -- event = 'BufRead',

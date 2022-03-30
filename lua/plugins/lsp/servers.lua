@@ -17,6 +17,16 @@ local luasnip = require('luasnip')
 -- nvim-cmp setup
 local cmp = require('cmp')
 
+-- turn off the virtual diagnostic text
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+ vim.lsp.diagnostic.on_publish_diagnostics, {
+   -- Enable underline, use default values
+   underline = true,
+   -- Enable virtual text, override spacing to 4
+   virtual_text = false
+ }
+)
+
 cmp.setup {
   snippet = {
     expand = function(args)
