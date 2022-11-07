@@ -54,11 +54,13 @@ api.nvim_command([[autocmd BufWritePre * %s/\s\+$//e]])
 api.nvim_command([[autocmd FileType md setlocal ts=2 sw=2 sts=2 et ai colorscheme=sonokai]])
 api.nvim_command([[autocmd BufEnter *.md silent! colorscheme sonokai]])
 
-api.nvim_command([[autocmd FileType lua setlocal ts=2 sw=2 sts=2 et ai]])
-api.nvim_command([[autocmd FileType tf setlocal ts=2 sw=2 sts=2 et ai]])
-api.nvim_command([[autocmd FileType hcl setlocal ts=2 sw=2 sts=2 et ai]])
+-- api.nvim_command([[autocmd FileType go colorscheme sonokai]])
+api.nvim_command([[autocmd FileType lua  setlocal ts=2 sw=2 sts=2 et ai]])
+api.nvim_command([[autocmd FileType js   setlocal ts=2 sw=2 sts=2 et ai]])
+api.nvim_command([[autocmd FileType tf   setlocal ts=2 sw=2 sts=2 et ai]])
+api.nvim_command([[autocmd FileType hcl  setlocal ts=2 sw=2 sts=2 et ai]])
 api.nvim_command([[autocmd FileType json setlocal ts=2 sw=2 sts=2 et ai]])
-api.nvim_command([[autocmd FileType sh setlocal ts=2 sw=2 sts=2 et ai]])
+api.nvim_command([[autocmd FileType sh   setlocal ts=2 sw=2 sts=2 et ai]])
 
 -- Use tabs in Makefiles
 api.nvim_command([[autocmd FileType make set noexpandtab shiftwidth=8 softtabstop=0]])

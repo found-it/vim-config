@@ -101,8 +101,8 @@ lsp_installer.on_server_ready(function(server)
         opts.root_dir = function(fname)
           return util.root_pattern(".git", "setup.py",  "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
             util.path.dirname(fname)
-        end
     --     end
+        end
     end
 
     -- This setup() function is exactly the same as lspconfig's setup function.
@@ -121,6 +121,7 @@ local servers = {
   "dockerls",     -- Docker
   "zk",           -- Markdown
   "terraformls",  -- Terraform
+  "rust_analyzer",
 }
 
 for _, name in pairs(servers) do

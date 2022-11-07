@@ -4,10 +4,35 @@
 --
 
 require('nvim-treesitter.configs').setup {
-  ensure_installed = "maintained",
+  ensure_installed = "all",
   sync_install = false,
   ignore_install = {
-      "beancount"
+    "astro",
+    "beancount",
+    "d",
+    "elm",
+    "elvish",
+    "embedded_template",
+    "foam",
+    "fortran",
+    "hack",
+    "haskell",
+    "help",
+    "m68k",
+    "org",
+    "phpdoc",
+    "proto",
+    "qmljs",
+    "rego",
+    "rnoweb",
+    "scheme",
+    "slint",
+    "swift",
+    "tiger",
+    "todotxt",
+    "v",
+    "verilog",
+    "wgsl",
   },
   highlight = {
     enable = true,

@@ -23,7 +23,11 @@ return require('packer').startup(function(use)
   -- packer manages itself
   use 'wbthomason/packer.nvim'
 
+  --
+  --
   -- colorschemes
+  --
+  --
   use 'liuchengxu/space-vim-dark'
   use 'tanvirtin/monokai.nvim'
   use({
@@ -44,6 +48,14 @@ return require('packer').startup(function(use)
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  use {
+    'meliora-theme/neovim',
+    requires = {'rktjmp/lush.nvim'},
+    config = function()
+      require('plugins.meliora')
+    end,
   }
 
   -- multi-line stuff
