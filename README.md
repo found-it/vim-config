@@ -30,3 +30,20 @@ wget -O ~/.vim/colors/gruvbox.vim https://raw.githubusercontent.com/morhetz/gruv
 ```sh
 :PylspInstall pyls-flake8 pylsp-mypy pyls-isort
 ```
+
+# Installing on Fedora
+
+### Alacritty
+```
+sudo dnf install -y alacritty
+```
+
+Need to make sure the alacritty config uses the proper path for `fish` for the login shell
+
+Need to make sure to install the correct fonts
+
+### Neovim
+
+### Fish
+
+Need to install starship

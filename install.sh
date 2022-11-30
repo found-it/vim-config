@@ -27,15 +27,25 @@ install_nvim() {
     #     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
     # Set up NeoVim Configuration
+    printf "Set up configuration [neovim]\n"
     mkdir -p "$HOME/.config/nvim"
     ln -s "$HOME/.dotfiles/vim-config/init.lua" "$HOME/.config/nvim/init.lua" | tee -a $logfile
     ln -s "$HOME/.dotfiles/vim-config/lua/" "$HOME/.config/nvim/lua" | tee -a $logfile
     ln -s "$HOME/.dotfiles/vim-config/settings.json" "$HOME/.config/nvim/settings.json" | tee -a $logfile
-    cp coc-settings.json "$HOME/.config/nvim"
+    ln -s "$HOME/.dotfiles/vim-config/coc-settings.json" "$HOME/.config/nvim/coc-settings.json" | tee -a $logfile
+    # cp coc-settings.json "$HOME/.config/nvim"
+
+    printf "Set up configuration [fish]\n"
+    mkdir -p "$HOME/.config/fish"
+    ln -s "$HOME/.dotfiles/vim-config/config.fish" "$HOME/.config/fish/config.fish" | tee -a $logfile
+
+    printf "Set up configuration [alacritty]\n"
+    ln -s "$HOME/.dotfiles/vim-config/alacritty.yaml" "$HOME/.alacritty.yml" | tee -a $logfile
 }
 
 
 install_tmux() {
+  printf "Set up configuration [tmux]\n"
   ln -s "$HOME/.dotfiles/vim-config/tmux.conf" "$HOME/.tmux.conf" | tee -a $logfile
 }
 
