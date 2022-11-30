@@ -43,6 +43,12 @@ Need to make sure the alacritty config uses the proper path for `fish` for the l
 Need to make sure to install the correct fonts
 
 ### Neovim
+```
+# Install libraries for neovim
+sudo dnf install -y \
+  gcc-c++.x86_64 \
+  libstdc++-static.x86_64
+```
 
 ### Fish
 
