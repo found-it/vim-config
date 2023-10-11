@@ -35,8 +35,9 @@ local on_attach = function(_, bufnr)
 end
 
 -- Add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 
 lsp_installer.settings({
@@ -116,9 +117,9 @@ local servers = {
   "pylsp",        -- Python
   "pyright",      -- Python
   "yamlls",       -- Yaml
-  "sumneko_lua",  -- Lua
+  "lua_ls",       -- Lua
   "jsonls",       -- JSON
-  "dockerls",     -- Docker
+  -- "dockerls",     -- Docker
   "zk",           -- Markdown
   "terraformls",  -- Terraform
   "rust_analyzer",

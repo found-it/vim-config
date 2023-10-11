@@ -19,34 +19,27 @@ install_nvim() {
         # TODO: git pull?
     fi
 
-    # Grab vim-plug
-    # printf "Installing |vim-plug|...\n" | tee -a $logfile
-    # curl -fLo "$HOME/.local/share/nvim/site/autoload/plug.vim" --create-dirs \
-    #     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | tee -a $logfile
-    # git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-    #     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
     # Set up NeoVim Configuration
     printf "Set up configuration [neovim]\n"
     mkdir -p "$HOME/.config/nvim"
-    ln -s "$HOME/.dotfiles/vim-config/init.lua" "$HOME/.config/nvim/init.lua" | tee -a $logfile
-    ln -s "$HOME/.dotfiles/vim-config/lua/" "$HOME/.config/nvim/lua" | tee -a $logfile
-    ln -s "$HOME/.dotfiles/vim-config/settings.json" "$HOME/.config/nvim/settings.json" | tee -a $logfile
-    ln -s "$HOME/.dotfiles/vim-config/coc-settings.json" "$HOME/.config/nvim/coc-settings.json" | tee -a $logfile
+    ln -sf "$HOME/.dotfiles/vim-config/neovim/init.lua" "$HOME/.config/nvim/init.lua" | tee -a $logfile
+    ln -sf "$HOME/.dotfiles/vim-config/neovim/lua/" "$HOME/.config/nvim/lua" | tee -a $logfile
+    ln -sf "$HOME/.dotfiles/vim-config/neovim/settings.json" "$HOME/.config/nvim/settings.json" | tee -a $logfile
+    ln -sf "$HOME/.dotfiles/vim-config/coc-settings.json" "$HOME/.config/nvim/coc-settings.json" | tee -a $logfile
     # cp coc-settings.json "$HOME/.config/nvim"
 
     printf "Set up configuration [fish]\n"
     mkdir -p "$HOME/.config/fish"
-    ln -s "$HOME/.dotfiles/vim-config/config.fish" "$HOME/.config/fish/config.fish" | tee -a $logfile
+    ln -sf "$HOME/.dotfiles/vim-config/fish/config.fish" "$HOME/.config/fish/config.fish" | tee -a $logfile
 
     printf "Set up configuration [alacritty]\n"
-    ln -s "$HOME/.dotfiles/vim-config/alacritty.yaml" "$HOME/.alacritty.yml" | tee -a $logfile
+    ln -sf "$HOME/.dotfiles/vim-config/alacritty/alacritty.yaml" "$HOME/.alacritty.yml" | tee -a $logfile
 }
 
 
 install_tmux() {
   printf "Set up configuration [tmux]\n"
-  ln -s "$HOME/.dotfiles/vim-config/tmux.conf" "$HOME/.tmux.conf" | tee -a $logfile
+  ln -sf "$HOME/.dotfiles/vim-config/tmux/tmux.conf" "$HOME/.tmux.conf" | tee -a $logfile
 }
 
 
@@ -81,7 +74,8 @@ install_commands() {
     if hash nvim 2>/dev/null; then
         # nvim is installed
         # nvim +PlugUpgrade +PlugInstall +PlugUpdate +qa
-        nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+        # nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+	echo "blah"
     else
         printf "You need to install neovim before moving on.\n" | tee -a $logfile
     fi
@@ -101,15 +95,26 @@ install_commands() {
 #   - tldr
 #   - jq
 #   - bat
+#   - fira-code-fonts
 #
+
+execute_install() {
+  directory="${1}"
+  cd "${directory}"
+  bash install.sh
+  cd ..
+}
+
 main() {
 
     mkdir -p "$HOME/.dotfiles"
     touch $logfile
 
-    install_commands
-    install_nvim
-    install_tmux
+    # install_commands
+    # install_nvim
+    # install_tmux
+    execute_install "alacritty"
+    execute_install "fish"
 }
 
 main
