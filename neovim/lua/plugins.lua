@@ -30,13 +30,7 @@ return require('packer').startup(function(use)
   --
   use 'liuchengxu/space-vim-dark'
   use 'tanvirtin/monokai.nvim'
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin",
-    config = function()
-      require('plugins.catppuccin')
-    end,
-  })
+  use 'catppuccin/nvim'
   use 'Mofiqul/vscode.nvim'
 
   -- https://github.com/sainnhe/sonokai
@@ -92,46 +86,39 @@ return require('packer').startup(function(use)
   }
 
   -- lsp
-  use {
-    'neovim/nvim-lspconfig',
-    -- event = 'BufRead',
-    config = function()
-        require('plugins.lsp.servers')
-    end,
-  }
+  -- use {
+  --   'neovim/nvim-lspconfig',
+  --   -- event = 'BufRead',
+  --   config = function()
+  --       require('plugins.lsp.servers')
+  --   end,
+  -- }
 
-  use {
-    'williamboman/nvim-lsp-installer',
-    config = function()
-        require('plugins.lsp.installer')
-    end,
-  }
+  -- use {
+  --   'williamboman/nvim-lsp-installer',
+  --   config = function()
+  --       require('plugins.lsp.installer')
+  --   end,
+  -- }
 
   -- Autocompletion plugin
-  use 'hrsh7th/nvim-cmp'
-
-  -- LSP source for nvim-cmp
-  use 'hrsh7th/cmp-nvim-lsp'
-
-  -- Snippets source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip'
-
-  -- Snippets plugin
-  use 'L3MON4D3/LuaSnip'
-
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('plugins.blankline')
-    end,
-  }
-
-  use {
-    'norcalli/nvim-colorizer.lua',
-    config = function()
-      require('colorizer').setup()
-    end,
-  }
+  -- use 'hrsh7th/nvim-cmp'
+  --
+  -- -- LSP source for nvim-cmp
+  -- use 'hrsh7th/cmp-nvim-lsp'
+  --
+  -- -- Snippets source for nvim-cmp
+  -- use 'saadparwaiz1/cmp_luasnip'
+  --
+  -- -- Snippets plugin
+  -- use 'L3MON4D3/LuaSnip'
+  --
+  -- use {
+  --   'norcalli/nvim-colorizer.lua',
+  --   config = function()
+  --     require('colorizer').setup()
+  --   end,
+  -- }
 
   use {
     'kyazdani42/nvim-tree.lua',
@@ -159,6 +146,14 @@ return require('packer').startup(function(use)
       })
     end
   }
+
+  use({
+    "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+        require("plugins.null")
+    end,
+    requires = { "nvim-lua/plenary.nvim" },
+  })
 
 
 end)

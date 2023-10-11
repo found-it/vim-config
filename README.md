@@ -27,6 +27,13 @@ wget -O ~/.vim/colors/gruvbox.vim https://raw.githubusercontent.com/morhetz/gruv
 
 ## Install python language server plugins
 
+##### `pylsp`
+```
+dnf search python3-pip
+sudo dnf install -y python3-pip
+pip install python-lsp-server
+```
+
 ```sh
 :PylspInstall pyls-flake8 pylsp-mypy pyls-isort
 ```
@@ -41,6 +48,11 @@ sudo dnf install -y alacritty
 Need to make sure the alacritty config uses the proper path for `fish` for the login shell
 
 Need to make sure to install the correct fonts
+```
+mkdir ~/.local/share/fonts
+unzip ~/Downloads/FiraCode.zip -d ~/.local/share/fonts
+fc-cache -fv
+```
 
 ### Neovim
 ```
@@ -48,6 +60,11 @@ Need to make sure to install the correct fonts
 sudo dnf install -y \
   gcc-c++.x86_64 \
   libstdc++-static.x86_64
+
+# Install binaries for lsp plugins
+sudo dnf install -y \
+  nodejs \
+  go
 ```
 
 ### Fish

@@ -10,7 +10,7 @@ else
     autocmd BufWritePre * %s/\s\+$//e
 
     set showmode
-    set number relativenumber
+    " set number relativenumber
 
     set splitbelow
     set splitright
